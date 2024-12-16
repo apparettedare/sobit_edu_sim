@@ -1,0 +1,72 @@
+<launch>
+
+  <!-- these are the arguments you can pass this launch file, for example paused:=true -->
+  <arg name="paused"       default="false"/>
+  <arg name="use_sim_time" default="true"/>
+  <arg name="gui"          default="true"/>
+  <arg name="headless"     default="false"/>
+  <arg name="debug"        default="false"/>
+
+  <arg name="robot_namespace" default="sobit_edu"/>
+
+  <!-- Spawn Coords -->
+  <arg name="coords"          default="-x 0 -y 0 -z 0"/>
+
+  <arg name="visualize"    default="false"/> <!-- LiDAR laser visualization flag -->
+  <arg name="rviz"         default="true"/>
+  <!-- Load URDF file -->
+  <arg name="urdf_file" 
+        default="$(find xacro)/xacro
+                '$(find sobit_edu_sim_description)/robots/sobit_edu.urdf.xacro'
+                robot_namespace:=$(arg robot_namespace)"/>
+
+  <!-- Load the URDF into the ROS Parameter Server -->
+  <param name="robot_description" command="$(arg urdf_file) visualize:=$(arg visualize)" />
+
+  <!-- Load Gazebo ROS package -->
+  <include file="$(find gazebo_ros)/launch/empty_world.launch">
+    <!-- <arg name="world_name" value="$(find your_file_path)/file.(world or sdf)"/> -->
+    <arg name="paused"       value="$(arg paused)"/>
+    <arg name="use_sim_time" value="$(arg use_sim_time)"/>
+    <arg name="gui"          value="$(arg gui)"/>
+    <arg name="headless"     value="$(arg headless)"/>
+    <arg name="debug"        value="$(arg debug)"/>
+  </include>
+
+  <!-- Spawn a URDF robot into Gazebo -->
+  <node name="urdf_spawner" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen"
+  		args="-urdf -param robot_description $(arg coords) -model $(arg robot_namespace)"/>
+  
+  <!-- Load Gazebo controllers -->
+  <rosparam file = "$(find sobit_edu_sim_bringup)/config/controllers.yaml" command = "load"/>
+
+  <!-- Load Poses -->
+  <rosparam command="load" file="$(find sobit_edu_library)/config/sobit_edu_pose.yaml"/>
+
+  <!-- Load joint controller configurations from YAML file to parameter server -->
+  <rosparam file="$(find sobit_edu_sim_bringup)/config/joint_limit.yaml" command="load"/>
+
+  <!-- Load the controllers -->
+  <rosparam file="$(find sobit_edu_sim_bringup)/config/gz_ros_control_arm.yaml"  command="load"/>
+  <rosparam file="$(find sobit_edu_sim_bringup)/config/gz_ros_control_head.yaml" command="load"/>
+  <rosparam file="$(find sobit_edu_sim_bringup)/config/state_control_arm.yaml"  command="load"/>
+  <rosparam file="$(find sobit_edu_sim_bringup)/config/state_control_head.yaml" command="load"/>
+
+  <node name="controller_spawner" pkg="controller_manager" type="spawner" respawn="false" output="screen"
+        args="joint_state_controller"/>
+  <node name="controller_arm_head" pkg="controller_manager" type="spawner" respawn="false" output="screen"
+        args="head_camera_trajectory_controller
+              arm_trajectory_controller"/>
+
+  <!-- Load joint state publisher -->
+  <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" respawn="false" output="screen"/>
+
+  <!-- Visualize robot in RViz -->
+  <group if="$(arg rviz)">
+    <node name="rviz" pkg="rviz" type="rviz" args="-d $(find sobit_edu_sim_description)/rviz/display.rviz"/>
+  </group>
+
+  <!-- Load initial pose -->
+  <node pkg="sobit_edu_sim_bringup" name="initial_pose" type="pose.py" />
+  
+</launch>

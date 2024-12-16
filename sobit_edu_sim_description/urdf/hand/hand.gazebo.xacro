@@ -1,0 +1,46 @@
+<?xml version="1.0"  encoding="UTF-8"?>
+<robot xmlns:xacro="http://ros.org/wiki/xacro">
+  <xacro:macro name="hand_gazebo" params="prefix">
+    <gazebo reference="${prefix}_base_link">
+      <selfCollide>false</selfCollide>
+      <mu1>1.0</mu1>
+      <mu2>1.0</mu2>
+    </gazebo>
+    <gazebo reference="${prefix}_inner_l_link">
+      <selfCollide>false</selfCollide>
+      <mu1>1.0</mu1>
+      <mu2>1.0</mu2>
+    </gazebo>
+    <gazebo reference="${prefix}_inner_r_link">
+      <selfCollide>false</selfCollide>
+      <mu1>1.0</mu1>
+      <mu2>1.0</mu2>
+    </gazebo>
+    <gazebo reference="${prefix}_outer_l_link">
+      <selfCollide>false</selfCollide>
+      <mu1>1.0</mu1>
+      <mu2>1.0</mu2>
+    </gazebo>
+    <gazebo reference="${prefix}_outer_r_link">
+      <selfCollide>false</selfCollide>
+      <mu1>1.0</mu1>
+      <mu2>1.0</mu2>
+    </gazebo>
+    <gazebo reference="${prefix}_finger_l_link">
+      <selfCollide>false</selfCollide>
+      <mu1>1.0</mu1>
+      <mu2>1.0</mu2>
+    </gazebo>
+    <gazebo reference="${prefix}_finger_l_link">
+      <selfCollide>false</selfCollide>
+      <mu1>1.0</mu1>
+      <mu2>1.0</mu2>
+    </gazebo>
+    <gazebo>
+    <plugin name="joint_state_publisher" filename="libgazebo_ros_joint_state_publisher.so">
+      <jointName>hand_joint, hand_inner_l_joint, hand_finger_l_joint, hand_finger_r_joint, hand_outer_l_joint, hand_outer_r_joint</jointName>
+      <updateRate>1000.0</updateRate>
+    </plugin>
+  </gazebo>
+  </xacro:macro>
+</robot>

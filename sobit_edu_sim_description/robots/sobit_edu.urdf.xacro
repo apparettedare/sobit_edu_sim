@@ -1,0 +1,49 @@
+<?xml version="1.0" ?>
+
+<robot name="sobit_edu" xmlns:controller="http://playerstage.sourceforge.net/gazebo/xmlschema/#controller" xmlns:interface="http://playerstage.sourceforge.net/gazebo/xmlschema/#interface" xmlns:sensor="http://playerstage.sourceforge.net/gazebo/xmlschema/#sensor" xmlns:xacro="http://www.ros.org/wiki/xacro">
+  <!-- Add Common Xacro: transmissions, colors -->
+  <xacro:include filename="$(find sobit_edu_sim_description)/urdf/common.xacro" />
+  <xacro:include filename="$(find sobit_edu_sim_description)/urdf/materials.urdf.xacro" />
+  <xacro:include filename="$(find kobuki_description)/urdf/kobuki.urdf.xacro"/>
+
+
+  <!-- Add URDF: links, joints -->
+  <xacro:include filename="$(find sobit_edu_sim_description)/urdf/base/base.urdf.xacro" />
+  <xacro:include filename="$(find sobit_edu_sim_description)/urdf/body/stacks.urdf.xacro" />
+  <xacro:include filename="$(find sobit_edu_sim_description)/urdf/body/cover.urdf.xacro" />
+  <xacro:include filename="$(find sobit_edu_sim_description)/urdf/arm/arm.urdf.xacro" />
+  <xacro:include filename="$(find sobit_edu_sim_description)/urdf/hand/hand.urdf.xacro" />
+  <xacro:include filename="$(find sobit_edu_sim_description)/urdf/back/back.urdf.xacro" />
+  <xacro:include filename="$(find sobit_edu_sim_description)/urdf/head/head.urdf.xacro" />
+  
+  <xacro:include filename="$(find sobit_edu_sim_description)/urdf/sensor/matrix.urdf.xacro" />
+  <xacro:include filename="$(find sobit_edu_sim_description)/urdf/sensor/mic.urdf.xacro" />
+  <xacro:include filename="$(find sobit_edu_sim_description)/urdf/sensor/lidar.urdf.xacro" />
+  <xacro:include filename="$(find sobit_edu_sim_description)/urdf/sensor/head_camera.urdf.xacro" />
+  
+  <xacro:include filename="$(find urg_node)/urdf/hokuyo_ust.urdf.xacro" />
+  <xacro:include filename="$(find azure_kinect_ros_driver)/urdf/azure_kinect.urdf.xacro" />
+
+
+  <!-- Connect the previous Links and Joints -->
+  <xacro:base/>
+  <xacro:stack_hexagons parent="base_link" />
+  <xacro:cover prefix="cover" parent="plate_top_link" />
+  <xacro:arm prefix="arm" parent="plate_top_link" />
+  <xacro:hand prefix_hand="hand" prefix_finger="finger" parent="arm_wrist_tilt_link" />
+  <xacro:back prefix="back" parent="plate_top_link" />
+  <xacro:head prefix="head" parent="back_base_link" />
+  <xacro:head_camera prefix="head_camera" parent="head_camera_tilt_link" />
+  <xacro:mic prefix="mic" parent="back_base_link" />
+  <xacro:matrix prefix="matrix" parent="back_base_link" />
+  <xacro:lidar prefix="lidar" parent="plate_bottom_link" />
+  <xacro:property name="robot_name" value="sobit_edu"/>
+    <gazebo>
+      <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
+        <robotNamespace>/$(arg robot_namespace)</robotNamespace>
+        <robotSimType>gazebo_ros_control/DefaultRobotHWSim</robotSimType>
+        <legacyModeNS>true</legacyModeNS>
+      </plugin>
+    </gazebo>
+
+</robot>
