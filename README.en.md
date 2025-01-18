@@ -141,11 +141,11 @@ First, please set up the following environment before proceeding to the next ins
    ```
 3. [Optional] Let's run the demo program.
    ```sh
-   $ rosrun sobit_edu_library test_controll_wheel.py
+   $ rosrun sobit_edu_sim_library test_controll_wheel.py
    ```
 
 > [!NOTE]
-> Check the [example](sobit_edu_library/example/) folder to become familiar with how SOBIT EDU works, and learn the working functions from each sample file.
+> Check the [example](sobit_edu_sim_library/example/) folder to become familiar with how SOBIT EDU works, and learn the working functions from each sample file.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -188,7 +188,7 @@ This is a summary of information for moving the pan-tilt mechanism and manipulat
     ```
 
 > [!NOTE]
-> Existing poses are found in [sobit_edu_pose.yaml](sobit_edu_library/config/sobit_edu_pose.yaml). Please refer to [How to set new poses](#how-to-set-new-poses) for how to create poses.
+> Existing poses are found in [sobit_edu_pose.yaml](sobit_edu_sim_library/config/sobit_edu_pose.yaml). Please refer to [How to set new poses](#how-to-set-new-poses) for how to create poses.
 
 2.  `moveJoint()` : Moves a specified joint to an arbitrary angle.
     ```cpp
@@ -336,7 +336,7 @@ The joint names of SOBIT EDU and their constants are listed below.
 
 #### How to set new poses
 
-Poses can be added and edited in the file [sobit_edu_pose.yaml](sobit_edu_library/config/sobit_edu_pose.yaml). The format is as follows:
+Poses can be added and edited in the file [sobit_edu_pose.yaml](sobit_edu_sim_library/config/sobit_edu_pose.yaml). The format is as follows:
 
 
 ```yaml

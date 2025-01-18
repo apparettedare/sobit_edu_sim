@@ -1,7 +1,7 @@
 <launch>
 
   <!-- these are the arguments you can pass this launch file, for example paused:=true -->
-  <arg name="paused"       default="false"/>
+  <arg name="paused"       default="true"/>
   <arg name="use_sim_time" default="true"/>
   <arg name="gui"          default="true"/>
   <arg name="headless"     default="false"/>
@@ -41,7 +41,7 @@
   <rosparam file = "$(find sobit_edu_sim_bringup)/config/controllers.yaml" command = "load"/>
 
   <!-- Load Poses -->
-  <rosparam command="load" file="$(find sobit_edu_library)/config/sobit_edu_pose.yaml"/>
+  <rosparam command="load" file="$(find sobit_edu_sim_library)/config/sobit_edu_pose.yaml"/>
 
   <!-- Load joint controller configurations from YAML file to parameter server -->
   <rosparam file="$(find sobit_edu_sim_bringup)/config/joint_limit.yaml" command="load"/>
@@ -67,6 +67,6 @@
   </group>
 
   <!-- Load initial pose -->
-  <node pkg="sobit_edu_sim_bringup" name="initial_pose" type="pose.py" />
+  <!-- <node pkg="sobit_edu_sim_bringup" name="initial_pose" type="pose.py" /> -->
   
 </launch>

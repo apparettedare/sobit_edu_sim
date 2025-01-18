@@ -141,11 +141,11 @@ TurtleBot2をベースとしてSOBITSが開発したモバイルマニピュレ�
    ```
 3. [任意] デモプログラムを実行してみよう．
    ```sh
-   $ rosrun sobit_edu_library test_controll_wheel.py
+   $ rosrun sobit_edu_sim_library test_controll_wheel.py
    ```
 
 > [!NOTE]
-> SOBIT EDUの動作方法に慣れるため，[example](sobit_edu_library/example/)フォルダを確認し，それぞれのサンプルファイルから動作関数を学ぼう．
+> SOBIT EDUの動作方法に慣れるため，[example](sobit_edu_sim_library/example/)フォルダを確認し，それぞれのサンプルファイルから動作関数を学ぼう．
 
 <p align="right">(<a href="#readme-top">上に戻る</a>)</p>
 
@@ -187,7 +187,7 @@ SOBIT EDUのパンチルト機構とマニピュレータを動かすための�
     ```
 
 > [!NOTE]
-> 既存のポーズは[sobit_edu_pose.yaml](sobit_edu_library/config/sobit_edu_pose.yaml)に確認でいます．ポーズの作成方法については[ポーズの設定方法](#ポーズの設定方法)をご参照ください．
+> 既存のポーズは[sobit_edu_pose.yaml](sobit_edu_sim_library/config/sobit_edu_pose.yaml)に確認でいます．ポーズの作成方法については[ポーズの設定方法](#ポーズの設定方法)をご参照ください．
 
 2.  `moveJoint()` : 指定されたジョイントを任意の角度を動かす．
     ```cpp
@@ -335,7 +335,7 @@ SOBIT EDUのジョイント名とその定数名を以下の通りとなる．
 
 #### ポーズの設定方法
 
-[sobit_edu_pose.yaml](sobit_edu_library/config/sobit_edu_pose.yaml)というファイルでポーズの追加・編集ができます．以下のようなフォーマットになる．
+[sobit_edu_pose.yaml](sobit_edu_sim_library/config/sobit_edu_pose.yaml)というファイルでポーズの追加・編集ができます．以下のようなフォーマットになる．
 
 ```yaml
 sobit_edu_pose:

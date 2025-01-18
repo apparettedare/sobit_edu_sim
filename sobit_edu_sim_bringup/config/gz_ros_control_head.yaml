@@ -1,5 +1,4 @@
-sobit_edu:
-  gazebo_ros_control:
-    pid_gains:
-      head_camera_pan_joint : {p: 100,  d: 0.1, i: 1, i_clamp: 4}
-      head_camera_tilt_joint: {p: 100,  d: 0.1, i: 1, i_clamp: 4}
+gazebo_ros_control:
+  pid_gains:
+    head_camera_pan_joint : {p: 100,  d: 0.1, i: 1, i_clamp: 4}
+    head_camera_tilt_joint: {p: 100,  d: 0.1, i: 1, i_clamp: 4}
