@@ -58,9 +58,9 @@
 <!-- レポジトリの概要 -->
 ## 概要
 
-![SOBIT EDU](sobit_edu/docs/img/sobit_edu.png)
+![SOBIT EDU](img/sobit_edu.png)
 
-TurtleBot2をベースとしてSOBITSが開発したモバイルマニピュレータ（SOBIT EDU）を動かすためのライブラリである．
+TurtleBot2 ベースのモバイルマニピュレータ SOBIT EDU をシミュレーション上で操作するパッケージである。
 
 > [!WARNING]
 > 初心者の場合，実機のロボットを扱う際に，先輩方に付き添ってもらいながらロボットを動かしょう．
@@ -97,11 +97,11 @@ TurtleBot2をベースとしてSOBITSが開発したモバイルマニピュレ�
    ```
 2. 本レポジトリをcloneする．
    ```sh
-   $ git clone https://github.com/TeamSOBITS/sobit_edu
+   $ git clone https://github.com/TeamSOBITS/sobit_edu_sim
    ```
 3. レポジトリの中へ移動する．
    ```sh
-   $ cd sobit_edu/
+   $ cd sobit_edu_sim/
    ```
 4. 依存パッケージをインストールする．
    ```sh
@@ -135,9 +135,9 @@ TurtleBot2をベースとしてSOBITSが開発したモバイルマニピュレ�
 > [!NOTE]
 > 使用したい機能に応じて，`true`か`false`かに書き換えてください．
 
-2. [minimal.launch](sobit_edu_bringup/launch/minimal.launch)というlaunchファイルを実行する．
+2. [minimal.launch](sobit_edu_sim_bringup/launch/minimal.launch)というlaunchファイルを実行する．
    ```sh
-   $ roslaunch sobit_edu_bringup minimal.launch
+   $ roslaunch sobit_edu_sim_bringup minimal.launch
    ```
 3. [任意] デモプログラムを実行してみよう．
    ```sh
@@ -155,11 +155,11 @@ TurtleBot2をベースとしてSOBITSが開発したモバイルマニピュレ�
 実機を動かす前段階として，Rviz上でSOBIT EDUを可視化し，ロボットの構成を表示することができる．
 
 ```sh
-$ roslaunch sobit_edu_description display.launch
+$ roslaunch sobit_edu_sim_description display.launch
 ```
 
 正常に動作した場合は，次のようにRvizが表示される．
-![SOBIT EDU Display with Rviz](sobit_edu/docs/img/sobit_edu_display.png)
+![SOBIT EDU Display with Rviz](img/sobit_edu_display.png)
 
 <p align="right">(<a href="#readme-top">上に戻る</a>)</p>
 
@@ -387,7 +387,7 @@ SOBIT EDUの移動機構を動かすための情報まとめとなる．
 
 SOBIT EDUはオープンソースハードウェアとして[OnShape](https://cad.onshape.com/documents/0aff733aa8798f27efd96de3/w/e6c482276f9b94eef89215b6/e/a80437dc83d4b5d5f30b153e)にて公開しております．
 
-![SOBIT EDU in OnShape](sobit_edu/docs/img/sobit_edu_onshape.png)
+![SOBIT EDU in OnShape](img/sobit_edu_onshape.png)
 
 <p align="right">(<a href="#readme-top">上に戻る</a>)</p>
 

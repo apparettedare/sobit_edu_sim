@@ -58,9 +58,9 @@
 <!-- INTRODUCTION -->
 ## Introduction
 
-![SOBIT EDU](sobit_edu/docs/img/sobit_edu.png)
+![SOBIT EDU](img/sobit_edu.png)
 
-This is a library to operate the mobile manipulator (SOBIT EDU) developed by SOBITS based on TurtleBot2.
+This library operates the SOBIT EDU mobile manipulator (based on TurtleBot2) and supports simulation, enabling virtual testing before real-world deployment.
 
 > [!WARNING]
 > If you have no preivous experience controlling this robot, please have a senior colleague accompany you while you want to use this robot.
@@ -97,11 +97,11 @@ First, please set up the following environment before proceeding to the next ins
    ```
 2. Clone this repository.
    ```sh
-   $ git clone https://github.com/TeamSOBITS/sobit_edu
+   $ git clone https://github.com/TeamSOBITS/sobit_edu_sim
    ```
 3. Navigate into the repository.
    ```sh
-   $ cd sobit_edu/
+   $ cd sobit_edu_sim/
    ```
 4. Install the dependent packages.
    ```sh
@@ -135,9 +135,9 @@ First, please set up the following environment before proceeding to the next ins
 > [!NOTE]
 > Rewrite it as `true` or `false` depending on the functions you want to use.
 
-2. Execute the launch file [minimal.launch](sobit_edu_bringup/launch/minimal.launch).
+2. Execute the launch file [minimal.launch](sobit_edu_sim_bringup/launch/minimal.launch).
    ```sh
-   $ roslaunch sobit_edu_bringup minimal.launch
+   $ roslaunch sobit_edu_sim_bringup minimal.launch
    ```
 3. [Optional] Let's run the demo program.
    ```sh
@@ -155,11 +155,11 @@ First, please set up the following environment before proceeding to the next ins
 As a preliminary step to running the actual machine, SOBIT EDU can be visualized on Rviz to display the robot's configuration.
 
 ```sh
-$ roslaunch sobit_edu_description display.launch
+$ roslaunch sobit_edu_sim_description display.launch
 ```
 
 If it works correctly, Rviz will be displayed as follows.
-![SOBIT EDU Display with Rviz](sobit_edu/docs/img/sobit_edu_display.png)
+![SOBIT EDU Display with Rviz](img/sobit_edu_display.png)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -391,7 +391,7 @@ This is a summary of information for moving the SOBIT EDU moving mechanism.
 
 SOBIT EDU is available as open source hardware at [OnShape](https://cad.onshape.com/documents/0aff733aa8798f27efd96de3/w/e6c482276f9b94eef89215b6/e/a80437dc83d4b5d5f30b153e)．
 
-![SOBIT EDU in OnShape](sobit_edu/docs/img/sobit_edu_onshape.png)
+![SOBIT EDU in OnShape](img/sobit_edu_onshape.png)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
